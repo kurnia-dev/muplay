@@ -1,10 +1,14 @@
 <template>
-    <div class="overflow-y-auto overflow-hidden">
-        <div class="py-8 px-12 flex flex-col gap-16">
+    <div class="overflow-hidden overflow-y-auto relative">
+        <div class="w-full sticky top-0 py-4 px-[clamp(36px,5vw,56px)] bg-[var(--body-bg)]">
+            <SidebarNavButton class="sm:hidden bg-secondary text-[clamp(16px,3vw,20px)]"
+                :iconSrc="icons.search" title="Search" text="Search a song" href="/search" />
+        </div>
+        <div class="py-8 px-[clamp(36px,5vw,56px)] flex flex-col gap-16">
+            <PlayListGroup groupTitle="Recently Played" />
             <TrendingPlaylist />
-            <PlayListGroup groupTitle="Recommended" />
-            <PlayListGroup groupTitle="Recommended" />
-            <PlayListGroup groupTitle="Recommended" />
+            <PlayListGroup groupTitle="Recommended" direction="vertical" class="sm:hidden px-0" />
+            <PlayListGroup groupTitle="Most Played" />
         </div>
     </div>
 </template>
@@ -12,12 +16,22 @@
 <script>
 import PlayListGroup from '@/components/PlayListGroup.vue'
 import TrendingPlaylist from '@/components/TrendingPlaylist.vue'
+import SidebarNavButton from '@/components/SidebarNavButton.vue'
+import search from '@/assets/icons/search.svg'
 
 export default {
     props: ['code'],
     components: {
         TrendingPlaylist,
         PlayListGroup,
-    }
+        SidebarNavButton
+    },
+    data() {
+        return {
+            icons: {
+                search
+            }
+        };
+    },
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-    <div class="relative flex justify-between items-center grow-0 h-max max-h-[130px] shrink-0 basis-[max-content] w-full py-4 px-12">
+    <div class="sticky bottom-0 flex justify-between items-center grow-0 h-max max-h-[130px] shrink-0 basis-[max-content] w-full py-4 px-[clamp(36px,5vw,56px)] bg-[var(--body-bg)] " >
         <TrackInfo />
         <TrackControler />
-        <TrackRightControl />
+        <TrackRightControl class="hidden md:flex"/>
         <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" />
     </div>
 </template>

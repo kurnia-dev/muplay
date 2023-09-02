@@ -11,7 +11,7 @@ export default new Vuex.Store({
       artist: "Demien Rice",
       isFavorite: false,
     },
-    isLoggedIn: false
+    isLoggedIn: true
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {

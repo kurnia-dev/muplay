@@ -1,11 +1,11 @@
 <template>
-    <div class="flex gap-10 items-center justify-center">
-        <img id="track-thumbnail" :alt="alt" class="w-[80]" :src="thumbUrl" />
+    <div class="flex gap-4 xl:gap-10 items-center justify-center">
+        <img id="track-thumbnail" :alt="alt" class="w-[30px] md:w-[80px]" :src="thumbUrl" />
         <div class="">
-            <span id="track-title" class="block text-xl font-bold text-main">
+            <span id="track-title" class="block text-[13px,3vw,20px] font-bold text-main">
                 {{ title }}
             </span>
-            <span id="track-artist" class="block text-lg text-secondary">
+            <span id="track-artist" class="block text-[11px,3vw,18px] text-secondary">
                 {{ artist }}
             </span>
         </div>
