@@ -7,10 +7,11 @@ export default new Vuex.Store({
   state: {
     lastPlayed: {
       thumb: "https://ik.imagekit.io/kurniadev/thumb.png?updatedAt=1693472807210",
-      title: "Back to Her Men", 
-      artist: "Demien Rice", 
-      isFavorite: false, 
-    }
+      title: "Back to Her Men",
+      artist: "Demien Rice",
+      isFavorite: false,
+    },
+    isLoggedIn: true
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {
@@ -21,7 +22,5 @@ export default new Vuex.Store({
     setLastPlayed({ commit }, newSong) {
       commit("lastPlayedUpdated", newSong)
     }
-  },
-  modules: {
   }
 })

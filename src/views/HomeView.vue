@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import PlayListGroup from '@/components/PlayListGroup.vue';
-import TrendingPlaylist from '@/components/TrendingPlaylist.vue';
+import PlayListGroup from '@/components/PlayListGroup.vue'
+import TrendingPlaylist from '@/components/TrendingPlaylist.vue'
 
 export default {
     components: {
         TrendingPlaylist,
-        PlayListGroup
+        PlayListGroup,
     }
 }
 </script>
