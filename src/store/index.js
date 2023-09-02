@@ -11,14 +11,20 @@ export default new Vuex.Store({
       artist: "Demien Rice",
       isFavorite: false,
     },
-    isLoggedIn: true
+    isLoggedIn: false
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {
       state.lastPlayed = newSong
+    }, 
+    hasLogin(state) {
+      state.isLoggedIn = true
     }
   },
   actions: {
+    setLoggedIn({ commit }) {
+      commit('hasLogin')
+    },
     setLastPlayed({ commit }, newSong) {
       commit("lastPlayedUpdated", newSong)
     }

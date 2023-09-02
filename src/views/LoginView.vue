@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             client_id: '9a18f40f9c7a4e659e079864b76f5838',
-            redirect_uri: 'https://localhost:8080'
+            redirect_uri: 'https://kurnia-dev.github.io/muplay/'
         }
     },
     computed: {
@@ -20,10 +20,10 @@ export default {
         code() {
             return new URLSearchParams(window.location.search).get('code')
         }
-    }, 
+    },
     beforeCreate() {
         if (this.$store.state.isLoggedIn) {
-            this.$router.push({name: 'home'})
+            this.$router.push({ name: 'home'})
         }
     }
 }

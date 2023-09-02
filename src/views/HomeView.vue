@@ -14,6 +14,7 @@ import PlayListGroup from '@/components/PlayListGroup.vue'
 import TrendingPlaylist from '@/components/TrendingPlaylist.vue'
 
 export default {
+    props: ['code'],
     components: {
         TrendingPlaylist,
         PlayListGroup,
