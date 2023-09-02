@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind utilities;
+
+@layer base {
+
+    :root {
+        --body-bg: #0F0817;
+        --main-text-color: #ffffff;
+        --secondary-text-color: rgba(255, 255, 255, 0.4);
+        --neon-shadow: 0px 8px 59px -6px #9b6cf166;
+    }
+
+    body {
+        font-family: 'Urbanist', system-ui;
+        height: 100vh;
+        background-color: var(--body-bg);
+        color: white;
+    }
+
+    img {
+        cursor: pointer;
+    }
+
+    .thumbnail {
+        aspect-ratio: 1/1;
+    }
+
+    .neon-shadow {
+        box-shadow: var(--neon-shadow);
+    }
+
+    .neon-bg {
+        background: #9b6cf166;
+    }
+
+    .nonDraggableImage {
+        -webkit-user-drag: none;
+        /* Safari/Chrome */
+        user-drag: none;
+        /* Standard */
+        -moz-user-drag: none;
+        /* Firefox */
+    }
+
+    .text-main {
+        color: var(--main-text-color);
+    }
+
+    .text-secondary {
+        color: var(--secondary-text-color);
+    }
+
+    .bg-main {
+        background: #8E5AEF;
+    }
+
+    .bg-secondary {
+        background: #1D1725;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+}
