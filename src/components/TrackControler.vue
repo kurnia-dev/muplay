@@ -1,12 +1,11 @@
 <template>
     <div>
         <div ref="progress" class="hidden md:flex gap-8 items-center">
-            <span>{{ playPostion }}</span>
+            <span>{{ msToMinute(playPostion) }}</span>
             <input class="w-[300px]" type="range" min="0" v-model="playPostion" value="0" :max="duration" />
-            <span>{{ duration }}</span>
+            <span>{{ msToMinute(duration) }}</span>
         </div>
         <div ref="controls" class="flex gap-11 items-center justify-center py-4 px-3">
-            <audio :src="src"></audio>
             <img ref="shuffle" alt="" :src="icons.shuffle" class="hidden md:block" />
             <img ref="prev-song" alt="" :src="icons.prevSong" class="hidden md:block" />
             <img ref="play-pause" @click="togglePlay" alt="" :src="isPlaying ? icons.pause : icons.play"
@@ -30,7 +29,6 @@ export default {
     name: 'TrackControler',
     data() {
         return {
-            src: "",
             duration: "3:29",
             playPostion: "0:00",
             icons: {
@@ -41,7 +39,30 @@ export default {
                 repeat
             },
             player: null,
-            isPlaying: false
+            isPlaying: false, 
+            counter: null
+        }
+    },
+    methods: {
+        togglePlay() {
+            this.player.togglePlay()
+            this.isPlaying = !this.isPlaying
+        },
+        msToMinute(milliseconds) {
+            const seconds = milliseconds / 1000;
+            const minutes = seconds / 60;
+            return minutes.toFixed(2);
+        }
+    },
+    watch: {
+        isPlaying() {
+            if (this.isPlaying) {
+                this.counter = setInterval(() => {
+                    this.playPostion += 1000 // ms
+                }, 1000)
+            } else {
+                clearInterval(this.counter)
+            }
         }
     },
     beforeCreate() {
@@ -94,6 +115,8 @@ export default {
                 duration,
                 track_window: { current_track }
             }) => {
+                this.playPostion = position
+                this.duration = duration
                 this.$store.dispatch('updateCurrentTrack', current_track)
                 console.log('Currently Playing', current_track);
                 console.log('Position in Song', position);
@@ -110,12 +133,6 @@ export default {
             this.player.connect();
             this.$store.commit('playerCreated', this.player)
         }
-    },
-    methods: {
-        togglePlay() {
-            this.player.togglePlay()
-            this.isPlaying = !this.isPlaying
-        },
     }
 }
 </script>

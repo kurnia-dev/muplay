@@ -5,10 +5,6 @@
         <TrackRightControl class="hidden md:flex"/>
         <!-- <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" /> -->
     </div>
-    <!-- <Player
-        :token="accesToken" 
-        uris="spotify:track:6GsAD8PgHxmEuIPTG8GP3M"
-    /> -->
 </template>
 <script>
 import TrackInfo from "@/components/TrackInfo.vue"
