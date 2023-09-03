@@ -106,6 +106,9 @@ export default {
         const tracks = res.body.tracks
         this.$store.dispatch('addNewArtist', tracks)
       })
+    },
+    play() {
+      spotifyApi.play()
     }
   },
 
@@ -127,7 +130,7 @@ export default {
     this.loadTrendingIndonesia()
     this.addToDeveloperChoice('0nwz7qFOG52c3EHkSynigJ')
     this.addToPlaylistByArtist('61AtfSRoC4K8iyxUmoyz4N')
-
   }
 }
+
 </script>

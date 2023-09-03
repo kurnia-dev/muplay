@@ -5,24 +5,33 @@
         <TrackRightControl class="hidden md:flex"/>
         <!-- <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" /> -->
     </div>
+    <!-- <Player
+        :token="accesToken" 
+        uris="spotify:track:6GsAD8PgHxmEuIPTG8GP3M"
+    /> -->
 </template>
 <script>
 import TrackInfo from "@/components/TrackInfo.vue"
 import TrackControler from "@/components/TrackControler.vue"
 import TrackRightControl from "@/components/TrackRightControl.vue"
 import neonLight from '@/assets/neon-light.svg'
+// import SpotifyPlayer from 'react-spotify-web-playback' 
+// import SpotifyPlayer from '@/components/SpotifyPlayback.vue'
+
+// const Player = new SpotifyPlayer()
 
 export default {
     name: 'TrackPlayer',
     data() {
         return {
-            neonLight
+            neonLight, 
+            accesToken: this.$store.state.accesToken
         }
     },
     components: {
         TrackInfo,
         TrackControler,
-        TrackRightControl
+        TrackRightControl, 
     }
 }
 </script>

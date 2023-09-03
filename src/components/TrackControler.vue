@@ -7,11 +7,12 @@
         </div>
         <div ref="controls" class="flex gap-11 items-center justify-center py-4 px-3">
             <audio :src="src"></audio>
-            <img ref="shuffle" @click="play" alt="" :src="icons.shuffle" class="hidden md:block" />
-            <img ref="prev-song" @click="play" alt="" :src="icons.prevSong" class="hidden md:block" />
-            <img ref="play-pause" @click="play" alt="" :src="icons.playPause" class="neon-shadow rounded-full bg-[#9B6CF1] w-8 xl:w-auto"/>
-            <img ref="next-song" @click="play" alt="" :src="icons.nextSong" class="hidden md:block"/>
-            <img ref="repeat" @click="play" alt="" :src="icons.repeat" class="hidden md:block"/>
+            <img ref="shuffle" alt="" :src="icons.shuffle" class="hidden md:block" />
+            <img ref="prev-song" alt="" :src="icons.prevSong" class="hidden md:block" />
+            <img ref="play-pause" @click="togglePlay" alt="" :src="isPlaying ? icons.pause : icons.play"
+                class="neon-shadow rounded-full bg-[#9B6CF1] w-8 xl:w-auto" />
+            <img ref="next-song" alt="" :src="icons.nextSong" class="hidden md:block" />
+            <img ref="repeat" alt="" :src="icons.repeat" class="hidden md:block" />
         </div>
     </div>
 </template>
@@ -19,8 +20,11 @@
 import shuffle from '@/assets/icons/shuffle.svg'
 import prevSong from '@/assets/icons/prev-song.svg'
 import nextSong from '@/assets/icons/next-song.svg'
-import playPause from '@/assets/icons/play.svg'
+import play from '@/assets/icons/play.svg'
+import pause from '@/assets/icons/pause.svg'
 import repeat from '@/assets/icons/repeat.svg'
+
+import axios from 'axios'
 
 export default {
     name: 'TrackControler',
@@ -33,15 +37,70 @@ export default {
                 shuffle,
                 prevSong,
                 nextSong,
-                playPause,
+                play, pause,
                 repeat
-            }
+            },
+            player: null,
+            isPlaying: false
         }
-    }, 
+    },
+    beforeCreate() {
+        const script = document.createElement("script");
+        script.src = "https://sdk.scdn.co/spotify-player.js";
+        script.async = true;
+
+        document.body.appendChild(script);
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            this.player = new window.Spotify.Player({
+                name: 'Web Playback SDK',
+                getOAuthToken: cb => { cb(this.$store.state.accesToken); },
+                volume: 0.5
+            });
+
+            this.player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+
+                axios.put(
+                    'https://api.spotify.com/v1/me/player',
+                    {
+                        device_ids: [device_id],
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${this.$store.state.accesToken}`,
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                ).then(response => {
+                    console.log('Playback transferred successfully', response.data);
+                })
+            });
+
+            this.player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
+
+            this.player.getCurrentState().then(state => {
+                if (!state) {
+                    return;
+                }
+
+                var current_track = state.track_window.current_track;
+                var next_track = state.track_window.next_tracks[0];
+
+                console.log('Currently Playing', current_track);
+                console.log('Playing Next', next_track);
+            });
+
+
+            this.player.connect();
+        }
+    },
     methods: {
-        play() {
-            
-        }
+        togglePlay() {
+            this.player.togglePlay()
+            this.isPlaying = !this.isPlaying
+        },
     }
 }
 </script>

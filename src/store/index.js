@@ -21,7 +21,8 @@ export default new Vuex.Store({
     recommendation: [], 
     trendingIndonesia: [], 
     developerChoice: '',
-    playlistByArtist: []
+    playlistByArtist: [], 
+    player: {}
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {
