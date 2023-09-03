@@ -101,7 +101,14 @@ export default {
             });
 
 
+            this.player.getVolume().then(volume => {
+                const volume_percentage = volume * 100;
+                this.$store.dispatch('adjustVolume', volume_percentage)
+
+            });
+
             this.player.connect();
+            this.$store.commit('playerCreated', this.player)
         }
     },
     methods: {

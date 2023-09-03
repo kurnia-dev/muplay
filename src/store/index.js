@@ -24,6 +24,7 @@ export default new Vuex.Store({
     playlistByArtist: [],
     player: {},
     currentTrack: {},
+    volume: ''
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {
@@ -59,6 +60,12 @@ export default new Vuex.Store({
     },
     currentTrackUpdated(state, track) {
       state.currentTrack = track
+    }, 
+    volumeAdjusted(state, volume) {
+      state.volume = volume
+    }, 
+    playerCreated(state, player) {
+      state.player = player
     }
   },
   actions: {
@@ -94,6 +101,9 @@ export default new Vuex.Store({
     },
     updateCurrentTrack({ commit }, track) {
       commit('currentTrackUpdated', track)
+    }, 
+    adjustVolume({ commit }, volume) {
+      commit('volumeAdjusted', volume)
     }
   },
   plugins: [createPersistedState()]
