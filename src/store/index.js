@@ -13,48 +13,52 @@ export default new Vuex.Store({
       isFavorite: false,
     },
     isLoggedIn: false,
-    code: '', 
-    accesToken: '', 
-    refreshToken: '', 
-    expiresInToken: '', 
-    recentlyPlayed: [], 
-    recommendation: [], 
-    trendingIndonesia: [], 
+    code: '',
+    accesToken: '',
+    refreshToken: '',
+    expiresInToken: '',
+    recentlyPlayed: [],
+    recommendation: [],
+    trendingIndonesia: [],
     developerChoice: '',
-    playlistByArtist: [], 
-    player: {}
+    playlistByArtist: [],
+    player: {},
+    currentTrack: {},
   },
   mutations: {
     lastPlayedUpdated(state, newSong) {
       state.lastPlayed = newSong
-    }, 
+    },
     hasLogin(state) {
       state.isLoggedIn = true
-    }, 
+    },
     codeAdded(state, code) {
       state.code = code
-    }, 
+    },
     accesTokenUpdated(state, accesToken) {
       state.accesToken = accesToken
-    }, 
+    },
     refreshTokenUpdated(state, refreshToken) {
       state.refreshToken = refreshToken
-    }, 
+    },
     expiresInTokenUpdated(state, expiresInToken) {
       state.expiresInToken = expiresInToken
-    }, 
+    },
     recommendationListAdded(state, tracks) {
       state.recommendation = tracks
-    }, 
+    },
     trendingIndonesiaAdded(state, detail) {
       state.trendingIndonesia = detail
-    }, 
+    },
     developerChoiceAdded(state, tracks) {
       state.developerChoice = ''
       state.developerChoice = tracks
-    }, 
+    },
     artistAdded(state, artist) {
       state.playlistByArtist = artist
+    },
+    currentTrackUpdated(state, track) {
+      state.currentTrack = track
     }
   },
   actions: {
@@ -63,10 +67,10 @@ export default new Vuex.Store({
     },
     setLastPlayed({ commit }, newSong) {
       commit("lastPlayedUpdated", newSong)
-    }, 
+    },
     setCode({ commit }, code) {
       commit('codeAdded', code)
-    }, 
+    },
     updateAccesToken({ commit }, accesToken) {
       commit('accesTokenUpdated', accesToken)
     },
@@ -75,18 +79,21 @@ export default new Vuex.Store({
     },
     updateExpiresInToken({ commit }, expiresInToken) {
       commit('expiresInTokenUpdated', expiresInToken)
-    }, 
+    },
     updateRecommendationList({ commit }, tracks) {
       commit('recommendationListAdded', tracks)
-    }, 
+    },
     updateTrendingIndonesia({ commit }, detail) {
       commit('trendingIndonesiaAdded', detail)
-    }, 
+    },
     updateDeveloperChoice({ commit }, tracks) {
       commit('developerChoiceAdded', tracks)
-    }, 
-    addNewArtist({commit}, artist) {
+    },
+    addNewArtist({ commit }, artist) {
       commit('artistAdded', artist)
+    },
+    updateCurrentTrack({ commit }, track) {
+      commit('currentTrackUpdated', track)
     }
   },
   plugins: [createPersistedState()]

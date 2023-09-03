@@ -1,11 +1,11 @@
 <template>
     <div class="flex gap-4 xl:gap-10 items-center justify-center">
-        <img id="track-thumbnail" :alt="alt" class="w-[30px] md:w-[80px]" :src="thumbUrl" />
-        <div class="">
-            <span id="track-title" class="block text-[13px,3vw,20px] font-bold text-main">
+        <img id="track-thumbnail" :alt="alt" class="w-[30px] md:w-[80px]" :src="image" />
+        <div class="overflow-hidden">
+            <span id="track-title" class="w-max block text-[13px,3vw,20px] font-bold text-main">
                 {{ title }}
             </span>
-            <span id="track-artist" class="block text-[11px,3vw,18px] text-secondary">
+            <span id="track-artist" class="w-max block text-[11px,3vw,18px] text-secondary">
                 {{ artist }}
             </span>
         </div>
@@ -28,21 +28,25 @@ export default {
         }
     },
     computed: {
-        thumbUrl() {
-            return this.lastPlayed.thumb
+        currentTrack() {
+            return this.$store.state.currentTrack
         },
+        image() {
+            return this.currentTrack.album.images[0].url
+        }, 
         title() {
-            return this.lastPlayed.title
+            return this.currentTrack.name
         },
         artist() {
-            return this.lastPlayed.artist
+            return this.currentTrack.artists[0].name
         },
         alt() {
             return this.title + " - " + this.artist
         },
         isFavorite() {
-            return this.lastPlayed.isFavorite
+            return false
         }
-    }
+    },
+
 }
 </script>

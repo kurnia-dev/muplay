@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             neonLight, 
-            accesToken: this.$store.state.accesToken
+            accesToken: this.$store.state.accesToken, 
         }
     },
     components: {

@@ -73,6 +73,15 @@ export default {
                     }
                 ).then(response => {
                     console.log('Playback transferred successfully', response.data);
+                    this.player.getCurrentState().then(state => {
+                        if (state) {
+                            const current_track = state.track_window.current_track;
+                            console.log(current_track);
+                            this.$store.dispatch('updateCurrentTrack', current_track)
+                        }
+                    }).catch(err => {
+                        console.error(err)
+                    })
                 })
             });
 
@@ -80,16 +89,15 @@ export default {
                 console.log('Device ID has gone offline', device_id);
             });
 
-            this.player.getCurrentState().then(state => {
-                if (!state) {
-                    return;
-                }
-
-                var current_track = state.track_window.current_track;
-                var next_track = state.track_window.next_tracks[0];
-
+            this.player.addListener('player_state_changed', ({
+                position,
+                duration,
+                track_window: { current_track }
+            }) => {
+                this.$store.dispatch('updateCurrentTrack', current_track)
                 console.log('Currently Playing', current_track);
-                console.log('Playing Next', next_track);
+                console.log('Position in Song', position);
+                console.log('Duration of Song', duration);
             });
 
 
