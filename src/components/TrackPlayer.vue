@@ -3,7 +3,7 @@
         <TrackInfo />
         <TrackControler />
         <TrackRightControl class="hidden md:flex"/>
-        <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" />
+        <!-- <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" /> -->
     </div>
 </template>
 <script>

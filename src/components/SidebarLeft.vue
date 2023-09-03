@@ -4,7 +4,7 @@
             <SidebarNavButton :iconSrc="icons.home" title="Home" text="Home" href="/" />
             <SidebarNavButton :iconSrc="icons.search" title="Search" text="Search a song" href="/search"/>
         </div>
-        <PlayListGroup groupTitle="Recently Played" direction="vertical"/>
+        <PlayListGroup groupTitle="Developer Choice" direction="vertical" :tracks="developerChoice"/>
     </aside>
 </template>
 
@@ -21,7 +21,8 @@ export default {
             icons: {
                 home,
                 search
-            }
+            }, 
+            developerChoice: this.$store.state.developerChoice
         };
     },
     components: { SidebarNavButton, PlayListGroup }

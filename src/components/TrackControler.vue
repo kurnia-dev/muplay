@@ -37,6 +37,11 @@ export default {
                 repeat
             }
         }
+    }, 
+    methods: {
+        play() {
+            
+        }
     }
 }
 </script>
