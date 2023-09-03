@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-hidden overflow-y-auto relative z-10">
+    <div class="overflow-hidden overflow-y-auto relative">
         <div class="w-full sticky top-0 py-4 px-[clamp(36px,5vw,56px)] bg-[var(--body-bg)]">
             <SidebarNavButton class="lg:hidden bg-secondary text-[clamp(16px,3vw,20px)]"
                 :iconSrc="icons.search" title="Search" text="Search a song" href="/search" />

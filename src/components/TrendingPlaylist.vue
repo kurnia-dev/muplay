@@ -9,7 +9,7 @@
             </p>
             <a :href="details.href" class="bg-main neon-shadow py-[clamp(8px,3vw,16px)] px-[clamp(36px,3vw,48px)] text-[clamp(16px,3vw,20px)] font-medium rounded-[60px] w-max ">Play</a>
         </div>
-        <img :src="neonLight" class="absolute -top-[40%] right-0"/>
+        <img :src="neonLight" class="absolute -top-[40%] right-0 -z-10"/>
     </div>
 </template>
 <script>

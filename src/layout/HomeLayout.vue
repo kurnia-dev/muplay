@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="relative flex flex-col overflow-hidden h-screen">
-        <div class="flex gap-[clamp(60px,4vw,130px)] basis-auto grow-0 shrink-0 h-screen pb-[100px]">
+        <div class="relative flex z-10 gap-[clamp(60px,4vw,130px)] basis-auto grow-0 shrink-0 h-screen pb-[100px]">
             <SidebarLeft />
             <router-view />
         </div>
