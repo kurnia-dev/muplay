@@ -12,7 +12,7 @@
             <img :src="track.album.images[0].url" :title="track.name" alt="" class="rounded-[10%]"
                  :style="direction === 'vertical' ? 'width: clamp(60px,5vw,80px);' : 'min-width: clamp(160px,5vw,200px)'" />
             <div>
-              <a class="font-bold text-[clamp(16px,4vw,20px)]" :href="track.href">{{ track.name }}</a>
+              <a class="font-bold text-[clamp(16px,1vw,20px)]" :href="track.href">{{ track.name }}</a>
               <div class="text-[clamp(14px,4vw,18px)] text-secondary">{{ track.artists[0].name }}</div>
             </div>
           </li>

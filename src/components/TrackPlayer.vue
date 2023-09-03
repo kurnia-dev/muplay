@@ -3,7 +3,7 @@
         <TrackInfo />
         <TrackControler />
         <TrackRightControl class="hidden md:flex"/>
-        <!-- <img :src="neonLight" alt="" class="absolute left-0 -z-10 rotate-90" /> -->
+        <img :src="neonLight" alt="" class="absolute opacity-60 left-[-10%] -z-10 rotate-90" />
     </div>
 </template>
 <script>
@@ -11,10 +11,6 @@ import TrackInfo from "@/components/TrackInfo.vue"
 import TrackControler from "@/components/TrackControler.vue"
 import TrackRightControl from "@/components/TrackRightControl.vue"
 import neonLight from '@/assets/neon-light.svg'
-// import SpotifyPlayer from 'react-spotify-web-playback' 
-// import SpotifyPlayer from '@/components/SpotifyPlayback.vue'
-
-// const Player = new SpotifyPlayer()
 
 export default {
     name: 'TrackPlayer',

@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="href" class="flex gap-4 sm:gap-10 rounded-[16px] sm:rounded-[30px] text-xl text-secondary items-center py-3 sm:py-4 px-7 sm:px-9"
+    <router-link :to="href" class="flex gap-[clamp(16px,5vw,24px)] xl:gap-10 rounded-[16px] sm:rounded-[30px] text-xl text-secondary items-center py-3 sm:py-4 px-7 sm:px-9"
         :class="path == href ? 'active' : ''"
     >
         <img :src="iconSrc" class="h-[20px] sm:h-auto" :title="title" alt="" />

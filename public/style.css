@@ -607,16 +607,20 @@ img {
   position: sticky;
 }
 
+.-top-\[40\%\] {
+  top: -40%;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
 
-.left-0 {
-  left: 0px;
+.left-\[-10\%\] {
+  left: -10%;
 }
 
-.right-2\/4 {
-  right: 50%;
+.right-0 {
+  right: 0px;
 }
 
 .right-\[-10px\] {
@@ -633,6 +637,10 @@ img {
 
 .-z-10 {
   z-index: -10;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .mb-10 {
@@ -713,8 +721,8 @@ img {
   flex-grow: 0;
 }
 
-.basis-\[30\%\] {
-  flex-basis: 30%;
+.basis-\[35\%\] {
+  flex-basis: 35%;
 }
 
 .basis-\[max-content\] {
@@ -801,6 +809,10 @@ img {
 
 .gap-\[clamp\(1\.2rem\2c 3vw\2c 1\.7rem\)\] {
   gap: clamp(1.2rem,3vw,1.7rem);
+}
+
+.gap-\[clamp\(16px\2c 5vw\2c 24px\)\] {
+  gap: clamp(16px,5vw,24px);
 }
 
 .gap-\[clamp\(26px\2c 2vw\2c 32px\)\] {
@@ -950,12 +962,12 @@ img {
   font-size: clamp(14px,4vw,18px);
 }
 
-.text-\[clamp\(16px\2c 3vw\2c 20px\)\] {
-  font-size: clamp(16px,3vw,20px);
+.text-\[clamp\(16px\2c 1vw\2c 20px\)\] {
+  font-size: clamp(16px,1vw,20px);
 }
 
-.text-\[clamp\(16px\2c 4vw\2c 20px\)\] {
-  font-size: clamp(16px,4vw,20px);
+.text-\[clamp\(16px\2c 3vw\2c 20px\)\] {
+  font-size: clamp(16px,3vw,20px);
 }
 
 .text-\[clamp\(28px\2c 3vw\2c 48px\)\] {
@@ -1008,6 +1020,10 @@ img {
   color: 13px,3vw,20px;
 }
 
+.opacity-60 {
+  opacity: 0.6;
+}
+
 .shadow-\[0px_38px_67px_-29px_\#9b6cf166\] {
   --tw-shadow: 0px 38px 67px -29px #9b6cf166;
   --tw-shadow-colored: 0px 38px 67px -29px var(--tw-shadow-color);
@@ -1023,10 +1039,6 @@ img {
     margin-bottom: 3rem;
   }
 
-  .sm\:flex {
-    display: flex;
-  }
-
   .sm\:hidden {
     display: none;
   }
@@ -1035,16 +1047,12 @@ img {
     height: auto;
   }
 
-  .sm\:w-\[260px\] {
-    width: 260px;
+  .sm\:w-\[clamp\(200px\2c 15vw\2c 260px\)\] {
+    width: clamp(200px,15vw,260px);
   }
 
   .sm\:flex-row {
     flex-direction: row;
-  }
-
-  .sm\:gap-10 {
-    gap: 2.5rem;
   }
 
   .sm\:rounded-\[30px\] {
@@ -1073,6 +1081,16 @@ img {
 
   .md\:w-\[80px\] {
     width: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
   }
 }
 
